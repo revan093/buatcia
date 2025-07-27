@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kejutan Misteri 🎁</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fde68a, #fca5a5);
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #6b21a8;
+    }
+
+    .box-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background-color: #f87171;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box-container:hover {
+      transform: scale(1.05);
+    }
+
+    .lid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #ef4444;
+      border-radius: 20px 20px 0 0;
+      transition: transform 0.5s ease;
+      transform-origin: top center;
+    }
+
+    .label {
+      color: white;
+      font-weight: bold;
+      z-index: 2;
+      font-size: 1.2em;
+    }
+
+    .surprise {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .emoji {
+      font-size: 3em;
+      animation: bounce 1s infinite;
+    }
+
+    .message {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #4c1d95;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .music-controls {
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #8b5cf6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 Klik Kotak untuk Kejutan!</h1>
+
+  <div class="box-container" onclick="openBox()">
+    <div class="lid" id="lid"></div>
+    <div class="label">Klik Aku!</div>
+  </div>
+
+  <div class="surprise" id="surprise">
+    <div class="emoji">🎉✨🥳</div>
+    <div class="message">Tadaaa! Ini pesan spesial untukmu... 💌</div>
+  </div>
+
+  <div class="music-controls">
+    <button onclick="toggleMusic()">▶️ Play / ⏸ Pause Musik</button>
+  </div>
+
+  <!-- Ganti src ini ke lagu kamu -->
+  <audio id="bgMusic" src="music.mp3" loop></audio>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function openBox() {
+      document.getElementById("lid").style.transform = "rotateX(100deg)";
+      document.getElementById("surprise").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
